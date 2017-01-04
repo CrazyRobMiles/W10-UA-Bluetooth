@@ -1,0 +1,20 @@
+﻿<Page
+    x:Class="PrinterDemo.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PrinterDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Loaded="Page_Loaded" >
+    <StackPanel  VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Message" VerticalAlignment="Top"></TextBlock>
+            <TextBox Name="PrintTextBox" VerticalAlignment="Top" Width="200" ></TextBox>
+            <Button Content="Print" VerticalAlignment="Top" Click="Print_Button_Click"></Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Status: " VerticalAlignment="Top"></TextBlock>
+            <TextBlock Name="StatusTextBlock" VerticalAlignment="Top"></TextBlock>
+        </StackPanel>
+    </StackPanel>
+</Page>
