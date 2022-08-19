@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -258,7 +258,7 @@ namespace WindowsBluetooth
                 {
                     // Find all paired instances of the Rfcomm chat service
                     deviceCollection = await DeviceInformation.FindAllAsync(
-                        RfcommDeviceService.GetDeviceSelector(RfcommServiceId.SerialPort));
+                        RfcommDeviceService.GetDeviceSelector(RfcommServiceId.SerialPort), new string[] { "System.Devices.AepService.AepId" });
                 }
                 catch (Exception ex)
                 {
@@ -276,11 +276,12 @@ namespace WindowsBluetooth
 
                 DeviceInformation device = null;
 
-                foreach (DeviceInformation search in deviceCollection)
+                foreach (DeviceInformation Search in deviceCollection)
                 {
-                    if (search.Name.ToUpper() == bluetoothDeviceName.ToUpper())
+                    var deviceInfo = await DeviceInformation.CreateFromIdAsync((string)Search.Properties["System.Devices.AepService.AepId"]);
+                    if (deviceInfo.Name.ToUpper() == bluetoothDeviceName.ToUpper())
                     {
-                        device = search;
+                        device = Search;
                         break;
                     }
                 }
