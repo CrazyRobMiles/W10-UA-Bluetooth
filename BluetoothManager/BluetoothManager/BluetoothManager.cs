@@ -276,12 +276,12 @@ namespace WindowsBluetooth
 
                 DeviceInformation device = null;
 
-                foreach (DeviceInformation Search in deviceCollection)
+                foreach (DeviceInformation search in deviceCollection)
                 {
-                    var deviceInfo = await DeviceInformation.CreateFromIdAsync((string)Search.Properties["System.Devices.AepService.AepId"]);
+                    var deviceInfo = await DeviceInformation.CreateFromIdAsync((string)search.Properties["System.Devices.AepService.AepId"]);
                     if (deviceInfo.Name.ToUpper() == bluetoothDeviceName.ToUpper())
                     {
-                        device = Search;
+                        device = search;
                         break;
                     }
                 }
